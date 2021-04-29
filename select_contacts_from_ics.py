@@ -19,7 +19,7 @@ file = file[start:end]
 file = file.replace('END:VEVENT','END:VEVENT&sep')
 data = file.split('&sep')
 
-pattern = '(SUMMARY:.*(.*)\nTRANSP)'
+pattern = '(SUMMARY\:(.*?)\n)'
 i = 1
 new_list = []
 for element in data:
@@ -33,7 +33,7 @@ for element in data:
         print('{} pattern not found - check cal file'.format(i))
         i = i+1
     print('relevant? y (YES) / (NO) any other key')
-    user_input = input()
+    user_input = raw_input()
     if user_input == 'y':
         new_list.append(element)
 
